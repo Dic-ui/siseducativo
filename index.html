@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema Educativo - Pruebas</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px gray;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background: #2c7be5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #mensaje {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #panel {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login Sistema Educativo</h2>
+
+  <input type="text" id="usuario" placeholder="Usuario">
+  <input type="password" id="password" placeholder="Contraseña">
+
+  <button id="btnLogin" onclick="login()">Ingresar</button>
+
+  <p id="mensaje"></p>
+
+  <div id="panel">
+    <h3 id="bienvenida">Bienvenido al sistema</h3>
+    <button id="btnConsulta" onclick="mostrarDatos()">Consultar Información</button>
+
+    <table id="tablaDatos" border="1" style="margin:auto; margin-top:10px; display:none;">
+      <tr>
+        <th>Asignatura</th>
+        <th>Nota</th>
+      </tr>
+      <tr>
+        <td>Matemáticas</td>
+        <td>4.5</td>
+      </tr>
+      <tr>
+        <td>Programación</td>
+        <td>4.8</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script>
+function login() {
+  let usuario = document.getElementById("usuario").value;
+  let password = document.getElementById("password").value;
+
+  if (usuario === "" || password === "") {
+    document.getElementById("mensaje").innerText = "Campos obligatorios";
+    return;
+  }
+
+  if (usuario === "admin" && password === "123") {
+    document.getElementById("mensaje").innerText = "";
+    document.getElementById("panel").style.display = "block";
+  } else {
+    document.getElementById("mensaje").innerText = "Credenciales incorrectas";
+  }
+}
+
+function mostrarDatos() {
+  document.getElementById("tablaDatos").style.display = "block";
+}
+</script>
+
+</body>
+</html>
